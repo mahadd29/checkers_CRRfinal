@@ -80,4 +80,12 @@ for piece in game.board.pieces:
 
 # Testing
 
-Run `python3 -m unittest discover` from the root.
+Run `python3 -m unittest discover` from the root.  
+
+# Imported python packages
+The following Python packages are used by this library:  
+- [functools](https://pypi.org/project/functools/)
+- [argparse](https://pypi.org/project/argparse/)
+- [setuptools](https://pypi.org/project/setuptools/)
+- [unittest](https://pypi.org/project/unittest/)  
+Install packages by running `pip install -r requirements.txt`
