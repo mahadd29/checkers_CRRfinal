@@ -1,7 +1,7 @@
 from copy import deepcopy
 from functools import reduce
-from .board_searcher import BoardSearcher
-from .board_initializer import BoardInitializer
+from board_searcher import BoardSearcher
+from board_initializer import BoardInitializer
 
 class Board:
 	"""
@@ -11,6 +11,7 @@ class Board:
 	current player,
 	size of board.
 	gets list of possible moves, moves pieces, changes players after each turn
+	new board created for each move
 
 	"""
 	def __init__(self):
