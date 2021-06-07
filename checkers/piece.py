@@ -73,8 +73,10 @@ class Piece:
 		current_column = self.get_column()
 		enemy_column = enemy_piece.get_column()
 		enemy_row = enemy_piece.get_row()
-		column_adjustment = -1 if current_row % 2 == 0 else 1
-		column_behind_enemy = current_column + column_adjustment if current_column == enemy_column else enemy_column
+		if current_row % 2 == 0: column_adjustment = -1
+		else: column_adjustment = 1
+		if current_column == enemy_column: column_behind_enemy = current_column + column_adjustment
+		else: column_behind_enemy = enemy_column
 		row_behind_enemy = enemy_row + (enemy_row - current_row)
 
 		return self.board.position_layout.get(row_behind_enemy, {}).get(column_behind_enemy)
@@ -103,7 +105,10 @@ class Piece:
 		king pieces get a list of all positions, non-king pieces get only positions in front of them  
 		
 		"""
-		return self.get_directional_adjacent_positions(forward = True) + (self.get_directional_adjacent_positions(forward = False) if self.king else [])
+		adjacent_positions = self.get_directional_adjacent_positions(forward = True) 
+		if self.king: 
+			adjacent_positions = adjacent_positions + self.get_directional_adjacent_positions(forward = False)
+		return adjacent_positions
 
 	def get_column(self):
 		""" return the column index of the piece's position """
@@ -115,7 +120,9 @@ class Piece:
 
 	def is_on_enemy_home_row(self):
 		""" return True if row index is 1 and the other player is 1, or if row index is width of the board and other player is not 1 """
-		return self.get_row() == self.get_row_from_position(1 if self.other_player == 1 else self.board.position_count)
+		if self.other_player == 1: position = 1
+		else: position = self.board.position_count
+		return self.get_row() == self.get_row_from_position(position)
 
 	def get_row_from_position(self, position):
 		""" return row index based on board width and position in 1D board list """
@@ -125,7 +132,12 @@ class Piece:
 		""" get a list of positions adjacent to the piece, only forward positions if forward is True """
 		positions = []
 		current_row = self.get_row()
-		next_row = current_row + ((1 if self.player == 1 else -1) * (1 if forward else -1))
+		
+		if self.player == 1: player_val = 1
+		else: player_val = -1
+		if forward: forward_val = 1
+		else: forward_val = -1
+		next_row = current_row + player_val * forward_val
 
 		if not next_row in self.board.position_layout:
 			return []
@@ -136,7 +148,9 @@ class Piece:
 
 	def get_next_column_indexes(self, current_row, current_column):
 		""" get a list of column indices for columns adjacent to current position, based on position in 1D board list """
-		column_indexes = [current_column, current_column + 1] if current_row % 2 == 0 else [current_column - 1, current_column]
+		if current_row % 2 == 0:
+			column_indexes = [current_column, current_column + 1]
+		else: column_indexes = [current_column - 1, current_column]
 
 		return filter((lambda column_index: column_index >= 0 and column_index < self.board.width), column_indexes)
 
