@@ -34,8 +34,8 @@ class Board:
 	def get_possible_moves(self):
 		""" if there are availble capture moves for the current player, return list of capture moves, otherwise return list of possible positional moves """
 		capture_moves = self.get_possible_capture_moves()
-
-		return capture_moves if capture_moves else self.get_possible_positional_moves()
+		if capture_moves: return capture_moves
+		else: return self.get_possible_positional_moves()
 
 	def get_possible_capture_moves(self):
 		""" return list of possible capture moves for all of a player' pieces """

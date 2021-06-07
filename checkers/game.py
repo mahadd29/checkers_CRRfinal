@@ -29,7 +29,10 @@ class Game:
 
 		self.board = self.board.create_new_board_from_move(move)
 		self.moves.append(move)
-		self.moves_since_last_capture = 0 if self.board.previous_move_was_capture else self.moves_since_last_capture + 1
+		if self.board.previous_move_was_capture:
+			self.moves_since_last_capture = 0
+		else: 
+			self.moves_since_last_capture = self.moves_since_last_capture + 1
 
 		return self
 
