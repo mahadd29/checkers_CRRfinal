@@ -91,7 +91,8 @@ class Board:
 
 	def switch_turn(self):
 		""" switch player from 1 to 2 or from 2 to 1 """
-		self.player_turn = 1 if self.player_turn == 2 else 2
+		if self.player_turn == 2: self.player_turn = 1 
+		else: self.player_turn = 2
 
 	def move_piece(self, move):
 		""" change board piece list to change the position of a piece in the list """
