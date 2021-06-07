@@ -1,0 +1,7 @@
+# python packages used by this library
+# install packages by running 'pip install -r requirements.txt'
+
+functools
+argparse
+setuptools
+unittest
