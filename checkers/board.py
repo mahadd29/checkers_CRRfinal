@@ -75,7 +75,7 @@ class Board:
 		enemy_piece = piece.capture_move_enemies[move[1]]
 		enemy_piece.capture()
 		self.move_piece(move)
-		#FIX
+		
 		further_capture_moves_for_piece = []
 		for capture_move in self.get_possible_capture_moves():
 			if move[1] == capture_move[0]:
