@@ -1,4 +1,4 @@
-from piece import Piece
+from .piece import Piece
 
 class BoardInitializer:
 	""" initialize a game board with a size, list of positions, and pieces in starting positions """
