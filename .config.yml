@@ -1,0 +1,18 @@
+language: python
+python:
+- '3.4'
+- '3.5'
+- '3.6'
+script:
+- python -m unittest discover
+deploy:
+  provider: pypi
+  skip_existing: true
+  user: <username>
+  password:
+    secure: <password>
+  on:
+    tags: true
+notifications:
+  email:
+    on_success: never
