@@ -145,7 +145,9 @@ class Piece:
 
 		next_column_indexes = self.get_next_column_indexes(current_row, self.get_column())
 
-		return [self.board.position_layout[next_row][column_index] for column_index in next_column_indexes]
+		for column_index in next_column_indexes:
+			positions.append(self.board.position_layout[next_row][column_index])
+		return positions
 
 	def get_next_column_indexes(self, current_row, current_column):
 		""" get a list of column indices for columns adjacent to current position, based on position in 1D board list """

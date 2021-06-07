@@ -1,7 +1,7 @@
 from copy import deepcopy
 from functools import reduce
-from board_searcher import BoardSearcher
-from board_initializer import BoardInitializer
+from .board_searcher import BoardSearcher
+from .board_initializer import BoardInitializer
 
 class Board:
 	"""
@@ -75,7 +75,11 @@ class Board:
 		enemy_piece = piece.capture_move_enemies[move[1]]
 		enemy_piece.capture()
 		self.move_piece(move)
-		further_capture_moves_for_piece = [capture_move for capture_move in self.get_possible_capture_moves() if move[1] == capture_move[0]]
+		#FIX
+		further_capture_moves_for_piece = []
+		for capture_move in self.get_possible_capture_moves():
+			if move[1] == capture_move[0]:
+				further_capture_moves_for_piece.append(capture_move)	
 
 		if further_capture_moves_for_piece and (originally_was_king == piece.king):
 			self.piece_requiring_further_capture_moves = self.searcher.get_piece_by_position(move[1])
