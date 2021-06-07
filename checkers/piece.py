@@ -3,9 +3,10 @@ from argparse import ArgumentParser
 
 class Piece:
 	"""
+	pieces are kept in lists in BOARDS
 	individual checkers piece.  
-	each piece has an associated board, a position on that board, and a player  
-	pieces can find possible moves, move on the board, and capture enemy pieces
+	each piece has an associated BOARD, a position on that BOARD, and a player  
+	pieces can find possible moves, move on the BOARD, and capture enemy pieces
 
 	"""
 

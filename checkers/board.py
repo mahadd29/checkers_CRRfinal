@@ -5,13 +5,13 @@ from board_initializer import BoardInitializer
 
 class Board:
 	"""
-
+	board is contained by a GAME and referenced by PIECES
 	checkers board
-	has a list of pieces with their positions,
+	has a list of PIECES with their positions,
 	current player,
 	size of board.
 	gets list of possible moves, moves pieces, changes players after each turn
-	new board created for each move
+	new board created for each turn in a GAME
 
 	"""
 	def __init__(self):

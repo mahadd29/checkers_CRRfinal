@@ -4,9 +4,9 @@ class Game:
 	"""
 
 	game of checkers object
-	a game has a series of boards, and a new board is created after each turn
+	a game has a BOARD, and a new BOARD is created to replace it after each turn
 	moves are kept track of in a list, and non-capture moves are limited so the game ends eventually
-	game calls methods to move pieces, checks limits, and determines winner and end of game
+	game calls methods to move PIECES, checks limits, and determines winner and end of game
 
 	"""
 	def __init__(self):
